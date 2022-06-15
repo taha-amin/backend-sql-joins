@@ -5,8 +5,7 @@ SELECT city, SUM(payment.amount) AS sum
 FROM city
 LEFT JOIN address ON city.city_id = address.city_id
 LEFT JOIN customer ON address.address_id = customer.address_id
-LEFT JOIN rental ON customer.customer_id = rental.customer_id
-INNER JOIN payment ON rental.rental_id = payment.rental_id
+INNER JOIN payment ON customer.customer_id = payment.customer_id
 GROUP BY city.city
 ORDER BY sum DESC
 LIMIT 10;
